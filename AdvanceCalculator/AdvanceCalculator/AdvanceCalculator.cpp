@@ -14,6 +14,7 @@ int getNum2();
 int multi(int x, int y);
 int powers(int y, int x);
 int divideInt(int y, int x);
+int mod(int y, int x);
 double divideDouble(int y, int x);
 string divide(int y, int x);
 
@@ -175,6 +176,24 @@ int divideInt(int y, int x)
 
 	return Quotient;
 		
+}
+
+int mod(int y, int x)
+{
+	int Temp = 0;
+	bool Found = false;
+	bool Invalid = true;
+	while (Found == false)
+	{
+		if (Temp >= y && multi(Temp, x) != y)
+		{
+			Invalid = true;
+			Found = true;
+		}
+		else if ()
+	}
+
+
 }
 
 double divideDouble(int y, int x)
