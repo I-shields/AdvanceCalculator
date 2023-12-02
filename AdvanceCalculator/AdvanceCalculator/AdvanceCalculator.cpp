@@ -4,6 +4,15 @@
 // Desc  : A calculator that can do more advance math
 //============================================================
 
+// N O T E S  A N D  I N F O \\
+//===========================\\
+//getNum2() goes first into a 
+//function, inside a function.
+//Inside a function it is "x"
+//first then "y" for example 
+//x/y x%y
+
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,8 +29,8 @@ string divide(int y, int x);
 
 int main()
 {
-	string FinalSolution;
-	FinalSolution = divide(getNum2(), getNum1());
+	int FinalSolution;
+	FinalSolution = mod(getNum2(), getNum1());
 	cout << FinalSolution;
 }
 
@@ -180,19 +189,16 @@ int divideInt(int y, int x)
 
 int mod(int y, int x)
 {
-	int Temp = 0;
-	bool Found = false;
-	bool Invalid = true;
-	while (Found == false)
+	int Temp;
+	int Sol;
+	Temp = divideInt(y, x);
+	if (multi(Temp, y) == x)
 	{
-		if (Temp >= y && multi(Temp, x) != y)
-		{
-			Invalid = true;
-			Found = true;
-		}
-		else if ()
+		Sol = 0;
+		return Sol;
 	}
-
+	else
+		return Temp;
 
 }
 
