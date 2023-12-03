@@ -20,39 +20,68 @@ using namespace std;
 
 int getNum1();
 int getNum2();
+double getdouble1();
+double getdouble2();
 int multi(int x, int y);
+double multiDouble(double x, double y);
 int powers(int y, int x);
-int divideInt(int y, int x);
 int mod(int y, int x);
-double divideDouble(int y, int x);
-string divide(int y, int x);
+int divide(int y, int x);
+double divideDouble(double y, double x);
+int doubleToInt(double x);
+int stringToInt(string x);
+int runCheck();
+double squareRoot(double x);
+
 
 int main()
 {
-	int FinalSolution;
-	FinalSolution = mod(getNum2(), getNum1());
-	cout << FinalSolution;
+	double FinalSolution;
+	FinalSolution = squareRoot(getdouble1());
+	cout << " The Final statement " << FinalSolution << endl;
 }
 
 
 int getNum1()
 {
+	//ask user to enter a number, store number in x, and return the number in x
 	int x;
 	cout << "Enter the first number: ";
 	cin >> x;
 	return x;
 }
+
 int getNum2() 
 {
+	//ask user to enter a number, store number in x, and return the number in x
 	int y;
 	cout << "Enter the second number: ";
 	cin >> y;
 	return y;
 }
 
+double getdouble1()
+{
+	//ask user to enter a number, store number in x, and return the number in x
+	double x;
+	cout << "Enter the first number: ";
+	cin >> x;
+	return x;
+}
+
+double getdouble2()
+{
+	//ask user to enter a number, store number in x, and return the number in x
+	double x;
+	cout << "Enter the second number: ";
+	cin >> x;
+	return x;
+}
+
 int multi(int y, int x)
 {
 	int Solution = 0;
+	//while i is less then y, add x to solution,
 	for (int i = 0; i < y; i++)
 	{
 		Solution = Solution + x;
@@ -61,69 +90,18 @@ int multi(int y, int x)
 
 }
 
-string divide(int y, int x)
+double multiDouble(double y, double x)
 {
-	int Temp = x;
-	int i = 0;
-	int Quotient = 0;
-	int Remainder = 0;
-	string Answer = "The answer is ";
-	bool Incomplete = true;
-	bool Invalid = false;
-	bool ValidDivisor = false;
-
-	while (ValidDivisor == false)
-	{
-		if (y == 0)
-		{
-			cout << "Cannot divide by zero, enter a different number: ";
-			cin >> y;
-		}
-		else
-			ValidDivisor = true;
-	}
-
-	if (Temp == y)
-	{
-		Quotient = 1;
-		Incomplete = false;
-	}
-
-	while (Incomplete == true)
-	{
-		if (Temp >= y && Temp - y >= 0)
-		{
-			Temp = Temp - y;
-			i++;
-		}
-		else if (Temp == y || Temp == 0)
-		{
-			Quotient = 1;
-			Incomplete = false;
-		}
-		else if (Temp == 1)
-		{
-			Remainder = 1;
-			Incomplete = false;
-		}
-		else if (Temp > 1 && Temp < y)
-		{
-			Remainder = Temp;
-			Incomplete = false;
-		}
-	}
-		
-
-	if (Remainder > 0 && Invalid == false)
-	{
-		Answer = Answer + to_string(i) + " with a remainder of " + to_string(Remainder);
-	}
-	else
-		Answer = Answer + to_string(i);
-	
+	double Answer;
+	Answer = x * y;
 	return Answer;
+}
 
-
+double divideDouble(double y, double x)
+{
+	double Answer;
+	Answer = x / y;
+	return Answer;
 }
 
 int powers(int y, int x)
@@ -137,7 +115,7 @@ int powers(int y, int x)
 	return Solution;
 }
 
-int divideInt(int y, int x)
+int divide(int y, int x)
 {
 	bool Valid = false;
 	bool Incomplete = true;
@@ -191,7 +169,7 @@ int mod(int y, int x)
 {
 	int Temp;
 	int Sol;
-	Temp = divideInt(y, x);
+	Temp = divide(y, x);
 	if (multi(Temp, y) == x)
 	{
 		Sol = 0;
@@ -202,7 +180,74 @@ int mod(int y, int x)
 
 }
 
-double divideDouble(int y, int x)
+int doubleToInt(double x)
 {
-	return 0;
+	string Number = to_string(x);
+	string DecimalPart;
+	int InitialDigits = x;
+	string ConvertedString;
+	int start = 0;
+	int Converted;
+
+	for (int i = 0; i < Number.length(); i++)
+	{
+		if (Number.at(i) == '.')
+		{
+			start = i;
+		}
+	}
+
+	for (int n = start; n < Number.length(); n++)
+	{
+		DecimalPart += Number.at(n);
+	}
+	ConvertedString = to_string(InitialDigits) + DecimalPart;
+	//cout << ConvertedString << endl;
+	Converted = stringToInt(ConvertedString);
+	return Converted;
+}
+
+int stringToInt(string x)
+{
+	//cout << x << endl;
+	int NumList = 0;
+	for (int i = 0; i < x.length(); i++)
+	{
+		if (x.at(i) >= 48 && x.at(i) <= 57)
+		{
+			NumList = NumList * 10;
+			NumList += x.at(i) - 48;
+		}
+	}
+
+	return NumList;
+}
+
+int runCheck()
+{
+	static int i = 0;
+	i++;
+	//cout << "i is " << i << endl;
+	return i;
+}
+
+double squareRoot(double x)
+{
+	double Main = x;
+	double y = 1;
+	double yn1 = 1;
+
+	for (int i = 0; i < 50; i++)
+	{
+		yn1 = divideDouble(y, Main);
+		cout << yn1 << " First" << endl;
+		yn1 = yn1 + y;
+		cout << yn1 << " second" << endl;
+		yn1 = multiDouble(yn1, 0.5);
+		cout << yn1 << " third" << endl;
+		y = yn1;
+		y++;
+	}
+
+	return yn1;
 }

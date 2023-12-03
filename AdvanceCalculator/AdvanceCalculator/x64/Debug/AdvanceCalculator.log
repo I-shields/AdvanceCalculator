@@ -1,2 +1,3 @@
 ﻿  AdvanceCalculator.cpp
+C:\Users\Isaac\Documents\GitHub\AdvanceCalculator\AdvanceCalculator\AdvanceCalculator\AdvanceCalculator.cpp(187,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   AdvanceCalculator.vcxproj -> C:\Users\Isaac\Documents\GitHub\AdvanceCalculator\AdvanceCalculator\x64\Debug\AdvanceCalculator.exe
