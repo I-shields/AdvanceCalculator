@@ -231,23 +231,19 @@ int runCheck()
 	return i;
 }
 
-double squareRoot(double x)
+double squareRoot(double y)
 {
-	double Main = x;
-	double y = 1;
-	double yn1 = 1;
+	double Main = y;
+	double xn1 = 1.0;
+	double x = 1.0;
 
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 25; i++)
 	{
-		yn1 = divideDouble(y, Main);
-		cout << yn1 << " First" << endl;
-		yn1 = yn1 + y;
-		cout << yn1 << " second" << endl;
-		yn1 = multiDouble(yn1, 0.5);
-		cout << yn1 << " third" << endl;
-		y = yn1;
-		y++;
+		xn1 = divideDouble(x, Main);
+		xn1 = xn1 + x;
+		xn1 = multiDouble(xn1, 0.5);
+		x = xn1;
 	}
 
-	return yn1;
+	return x;
 }
